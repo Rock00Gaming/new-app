@@ -29,10 +29,7 @@ export default function TextForm(props) {
     props.showAlert("You message will speak", "success : ");
   };
   const handleCopyClick = () => {
-    let text = document.getElementById("myBox");
-    text.select();
-    navigator.clipboard.writeText(text.value);
-    document.getSelection().removeAllRanges();
+    navigator.clipboard.writeText(text);
     props.showAlert("Your text has been copied", "success : ");
   };
 
@@ -107,7 +104,7 @@ export default function TextForm(props) {
         <p>{text.length} : Characters</p>
         <p>
           {
-            text.split(" ").filter((element) => {
+            text.split(/\s+/).filter((element) => {
               return element.length !== 0;
             }).length
           }{" "}
