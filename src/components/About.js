@@ -1,26 +1,16 @@
 import React, { useState } from "react";
 
-export default function About() {
-  const [myStyle, setMyStyle] = useState({
-    color: "black",
-    backgroundColor: "white",
-  });
-  const [btntext, setBtnStyle] = useState("Enable dark mode");
-  const toggleStyle = () => {
-    if (myStyle.color === "black") {
-      setMyStyle({
-        color: "white",
-        backgroundColor: "black",
-      });
-      setBtnStyle("Enable Light mode");
-    } else {
-      setMyStyle({
-        color: "black",
-        backgroundColor: "white",
-      });
-      setBtnStyle("Enable Dark mode");
-    }
+export default function About(props) {
+  // const [myStyle, setMyStyle] = useState({
+  //   color: "black",
+  //   backgroundColor: "white",
+  // });
+
+  let myStyle = {
+    color: props.mode === "dark" ? "white" : "#042743",
+    backgroundColor: props.mode === "dark" ? "#042743" : "white",
   };
+
   return (
     <div classNameName="container" style={myStyle}>
       <h1>About</h1>
@@ -36,7 +26,7 @@ export default function About() {
               aria-expanded="true"
               aria-controls="collapseOne"
             >
-              Accordion Item #1
+              Analyze Your Text
             </button>
           </h2>
           <div
@@ -45,14 +35,8 @@ export default function About() {
             data-bs-parent="#accordionExample"
           >
             <div className="accordion-body" style={myStyle}>
-              <strong>This is the first item's accordion body.</strong> It is
-              shown by default, until the collapse plugin adds the appropriate
-              classNamees that we use to style each element. These classNamees
-              control the overall appearance, as well as the showing and hiding
-              via CSS transitions. You can modify any of this with custom CSS or
-              overriding our default variables. It's also worth noting that just
-              about any HTML can go within the <code>.accordion-body</code>,
-              though the transition does limit overflow.
+              Rock Gaming gives you a way to analyze your text quickly and
+              efficiency. Be it word count , Characters count And text Preview
             </div>
           </div>
         </div>
@@ -67,7 +51,7 @@ export default function About() {
               aria-expanded="false"
               aria-controls="collapseTwo"
             >
-              Accordion Item #2
+              Free to Use
             </button>
           </h2>
           <div
@@ -78,7 +62,7 @@ export default function About() {
             <div className="accordion-body" style={myStyle}>
               <strong>This is the second item's accordion body.</strong> It is
               hidden by default, until the collapse plugin adds the appropriate
-              classNamees that we use to style each element. These classNamees
+              classNames that we use to style each element. These classNamees
               control the overall appearance, as well as the showing and hiding
               via CSS transitions. You can modify any of this with custom CSS or
               overriding our default variables. It's also worth noting that just
@@ -98,7 +82,7 @@ export default function About() {
               aria-expanded="false"
               aria-controls="collapseThree"
             >
-              Accordion Item #3
+              Browser Compatible
             </button>
           </h2>
           <div
@@ -109,7 +93,7 @@ export default function About() {
             <div className="accordion-body" style={myStyle}>
               <strong>This is the third item's accordion body.</strong> It is
               hidden by default, until the collapse plugin adds the appropriate
-              classNamees that we use to style each element. These classNamees
+              classNames that we use to style each element. These classNamees
               control the overall appearance, as well as the showing and hiding
               via CSS transitions. You can modify any of this with custom CSS or
               overriding our default variables. It's also worth noting that just
@@ -118,11 +102,6 @@ export default function About() {
             </div>
           </div>
         </div>
-      </div>
-      <div className="container">
-        <button className="btn btn-primary" onClick={toggleStyle}>
-          {btntext}
-        </button>
       </div>
     </div>
   );
